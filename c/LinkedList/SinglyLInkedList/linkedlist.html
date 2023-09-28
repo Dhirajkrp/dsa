@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        font-size: 16px;
+        /* padding-left: 1em; */
+        padding-inline: .5em;
+        
+        background-color: #222;
+        color: #eeeeee;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h2,h3,h1,h4{
+        border-left: 4px solid white;
+        padding-left: 0.3em;
+        font-weight: 600;
+      }
+      h1{
+        font-size: 1.7em;
+      }
+      h2{
+        font-size: 1.5em;
+        font-weight: 550;
+      }
+      h3{
+        font-size: 1.3em;
+        font-weight: 500;
+      }
+      p {
+        line-height: 1.5;
+      }
+      pre {
+        display: block;
+        overflow-x: scroll;
+        font-size: small;
+        word-wrap: break-word;
+        background-color: #121212;
+        padding: 1em;
+      }
+      th{
+        text-align: start;
+      }
+      li{
+        margin-block: .5em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Introduction to Linked List</h1>
+    <h2>Linked Lists</h2>
+    <p>
+      A linked list is a data structure that consists of a sequence of nodes,
+      where each node contains a value and a pointer to the next node in the
+      sequence. The first node in the sequence is called the head node, and the
+      last node is called the tail node. Linked lists are often used to
+      implement dynamic data structures that can grow or shrink in size during
+      program execution.
+    </p>
+    <h3>Advantages of Linked Lists</h3>
+    <ul>
+      <li>
+        Linked lists can be used to implement various data structures, such as
+        stacks, queues, and hash tables.
+      </li>
+      <li>
+        They can also be used to implement graph algorithms and to represent
+        sparse matrices.
+      </li>
+      <li>
+        One advantage of linked lists is that they can be modified efficiently,
+        since adding or removing an element from a linked list typically
+        requires only changing a few pointers, rather than moving a large block
+        of memory as with arrays.
+      </li>
+    </ul>
+    <h3>Differences Between Arrays and Linked Lists</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Arrays</th>
+          <th>Linked Lists</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Allocated in contiguous memory locations</td>
+          <td>Allocated in a non-contiguous fashion</td>
+        </tr>
+        <tr>
+          <td>Size is fixed at the time of creation</td>
+          <td>Size can be dynamically adjusted during program execution</td>
+        </tr>
+        <tr>
+          <td>Access time is fast</td>
+          <td>Access time is slower</td>
+        </tr>
+        <tr>
+          <td>Insertion and deletion require shifting elements</td>
+          <td>Insertion and deletion require updating pointers</td>
+        </tr>
+        <tr>
+          <td>Can be less memory-efficient</td>
+          <td>Can be more memory-efficient</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      In general, arrays are a good choice when the size of the data is known in
+      advance and random access to elements is important. Linked lists are a
+      good choice when the size of the data is not known in advance and when
+      insertion or deletion of elements is frequent.
+    </p>
+    <h2>Types of Linked Lists</h2>
+    <p>
+      There are several different types of linked lists, each with its own
+      characteristics and use cases. The main types of linked lists are:
+    </p>
+    <h3>1. Singly Linked List</h3>
+    <p>
+      A singly linked list is the simplest type of linked list. Each node in a
+      singly linked list contains a value and a pointer to the next node in the
+      sequence. The last node in the sequence points to <code>null</code>.
+      Singly linked lists are used in many applications where traversal of the
+      list only needs to be in one direction.
+    </p>
+    <h3>2. Doubly Linked List</h3>
+    <p>
+      A doubly linked list is a type of linked list where each node has two
+      pointers: one to the next node in the sequence, and one to the previous
+      node in the sequence. This allows for bidirectional traversal of the list.
+      Doubly linked lists are commonly used in applications where it is
+      necessary to traverse the list in both directions.
+    </p>
+    <h3>3. Circular Linked List</h3>
+    <p>
+      A circular linked list is a type of linked list where the last node in the
+      sequence points back to the first node in the sequence, creating a loop.
+      Circular linked lists can be either singly or doubly linked. They are used
+      in many applications where a list needs to be processed repeatedly in a
+      loop.
+    </p>
+    <h4>3.1 Singly Circular Linked List</h4>
+    <p>
+      In a singly circular linked list, the last node in the sequence points to
+      the first node, creating a loop. This type of linked list is useful for
+      applications where traversal of the list needs to start again from the
+      beginning after reaching the end.
+    </p>
+    <h4>3.2 Doubly Circular Linked List</h4>
+    <h2>Libraries and common functions used in a linkedlist</h2>
+    <h3>1. stdlib.h</h3>
+    <p>
+      The <code>stdlib.h</code> library in C provides functions for dynamic
+      memory allocation, which can be used to create and manipulate linked
+      lists.
+    </p>
+    <h4>Functions:</h4>
+    <ul>
+      <li>
+        <code>malloc(size_t size)</code>: Allocates a block of memory of the
+        specified size and returns a pointer to the first byte of the block.
+        This function is commonly used to create a new node in a linked list.
+      </li>
+      <li>
+        <code>free(void *ptr)</code>: Deallocates the memory previously
+        allocated by <code>malloc()</code>. This function is commonly used to
+        remove a node from a linked list.
+      </li>
+    </ul>
+    <h3>2. stdio.h</h3>
+    <p>
+      The <code>stdio.h</code> library in C provides functions for input and
+      output operations.
+    </p>
+    <h4>Functions:</h4>
+    <ul>
+      <li>
+        <code>printf()</code>: Prints formatted output to the standard output
+        stream (usually the console). This function is commonly used to display
+        the contents of a linked list to the user.
+      </li>
+      <li>
+        <code>scanf()</code>: Reads formatted input from the standard input
+        stream (usually the keyboard). This function is commonly used to read
+        user input and add nodes to a linked list.
+      </li>
+    </ul>
+    <h2>Few Useful changes</h2>
+    <p>
+      Writing <strong>struct node *var_name</strong> ,everytime to declare a
+      varible can get time consuming thus to shorten our work we can use the
+      <strong>typedef</strong> to give like a nickname to our newly created
+      datatype
+    </p>
+    <pre><code>typedef struct node Node;
+Node \*start;
+</code></pre>
+    <p>
+      One More thing is that instead of declaring the start ,end or head,tail
+      inside the main function we can define them globally outside the main so
+      that they are easily accessible to all the functions we create later.
+    </p>
+    <h1>Singly Linked List</h1>
+    <p>
+      In a singly linked list, each element in the list is called a node. Each
+      node contains two fields: a data field and a pointer field.
+    </p>
+    <p>
+      The data field is used to store the actual value of the node (for example,
+      an integer, string, or any other type of data). The pointer field, on the
+      other hand, is used to store the memory address of the next node in the
+      list.
+    </p>
+    <p>eg:</p>
+    <pre>
+    <code>struct node{
+int data;
+struct node\* next;
+};
+
+</code>
+</pre>
+
+    <h2>An Example code of Singly Linked list</h2>
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node{
+int data;
+struct node *next;
+};
+
+typedef struct node Node;
+
+Node *start = NULL , *end = NULL;
+
+//function to create a new Node
+Node* createNode(){
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    printf(&quot;Enter the data for the node: &quot;);
+    scanf(&quot;%d&quot; ,&amp;newNode-&gt;data);
+    newNode-&gt;next = NULL;
+    return newNode;
+}
+
+//function to add node at the end
+void insertLast(){
+    Node* newNode = createNode();
+    if(start == NULL){
+        start = newNode;
+        end= newNode;
+    }
+    else{
+        end-&gt;next = newNode;
+        end = newNode;
+    }
+}
+
+//function to create the list
+void createList(){
+    int choice =1;
+    while(choice ==1){
+        insertLast();
+        printf(&quot;Do you want to add more node? 1/0 : &quot;);
+        scanf(&quot;%d&quot; ,&amp;choice);
+    }
+}
+
+//funciton to print list
+void printList(){
+    Node *itr = start;
+    printf(&quot;\nThe list is : &quot;);
+    while(itr != NULL){
+        printf(&quot;%d -&gt;&quot; ,itr-&gt;data);
+        itr = itr-&gt;next;
+    }
+    printf(&quot;Null&quot;);
+}
+
+int main(){
+
+    createList();
+    printList();
+
+return 0;
+}
+
+</code></pre>
+    <p>In the above code ,we used 4 functions , lets see them one by one</p>
+    <h3>1. Node* createNode()</h3>
+    <pre><code>Node* createNode(){
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    printf(&quot;Enter the data for the node: &quot;);
+    scanf(&quot;%d&quot; ,&amp;newNode-&gt;data);
+    newNode-&gt;next = NULL;
+    return newNode;
+}
+
+</code></pre>
+    <p>
+      This function is used to create a node and returns the pointer to the
+      newly created node ,which we can the store as.
+    </p>
+    <pre><code>Node* newNode = createNode();
+</code></pre>
+    <h3>2. void insertLast()</h3>
+    <pre><code>void insertLast(){
+    Node* newNode = createNode();
+    if(start == NULL){
+        start = newNode;
+        end= newNode;
+    }
+    else{
+        end-&gt;next = newNode;
+        end = newNode;
+    }
+}
+
+</code></pre>
+    <p>
+      This function inserts a new node at the end of the list . If the start is
+      null ,i.e when list is empty the new node will become the start and end
+      both. Else if the list has some node , the end is updated to the new node
+      as that will become the new end of our list.
+    </p>
+    <h3>3. void createList()</h3>
+    <pre><code>void createList(){
+    int choice =1;
+    while(choice ==1){
+        insertLast();
+        printf(&quot;Do you want to add more node? 1/0 : &quot;);
+        scanf(&quot;%d&quot; ,&amp;choice);
+    }
+}
+</code></pre>
+    <p>
+      This function simply calls the insertLast() function until the user
+      desires ,or wants to add more nodes to the list.
+    </p>
+    <h3>4. void printList()</h3>
+    <pre><code>void printList(){
+    Node *itr = start;
+    printf(&quot;\nThe list is : &quot;);
+    while(itr != NULL){
+        printf(&quot;%d -&gt;&quot; ,itr-&gt;data);
+        itr = itr-&gt;next;
+    }
+    printf(&quot;Null&quot;);
+}
+</code></pre>
+    <p>
+      This is simply a helper function which prints the data of the list. we
+      first declare an iterator itr , which travers through the list and prints
+      as the data. The output will be in the format:
+    </p>
+    <pre><code>10-&gt;20-&gt;30-&gt;40-&gt;NULL
+</code></pre>
+    <h2>Advatages of using functionl approach</h2>
+    <p>There are multiple advantages of using this approach such as .</p>
+    <ul>
+      <li>
+        Reusability : The printList function can be used in all the four types
+        of linked list.
+      </li>
+      <li>
+        Easy to debug: It becomes easy to find out which part of the code is not
+        working properly.
+      </li>
+      <li>Makes the code a lot more readable .</li>
+    </ul>
+    <p>
+      After defing the functions the only things we need to do in the main() is
+    </p>
+    <pre><code>int main(){
+    createList();
+    printList();
+    return 0;
+}
+</code></pre>
+    <p>It craetes a list ,prints it and simply returns as simple as that. :)</p>
+    <h1>Some Useful Functions</h1>
+    <h2>void insertFirst()</h2>
+    <pre><code>void insertFirst(){
+Node* newNode = createNode();
+    if(start == NULL){
+    	start = newNode;
+    	end = newNode;
+    }
+    else{
+    	newNode-&gt;next = start;
+    	start = newNode;
+    }
+}
+</code></pre>
+    <p>
+      This function adds newly created node at the begining of the list . we use
+      the createNode() funciton here as well to reduce our work.
+    </p>
+    <p>
+      It creates a new node ,checks if the start is null ,if yes the newnode
+      will be the start else the new node will replace the start.
+    </p>
+    <h2>void insertPos()</h2>
+    <pre><code>void insertPos(){
+int pos = 1;
+printf(&quot;Enter the position you want to insert the node&quot;);
+scanf(&quot;%d&quot; ,&amp;pos);
+Node\* newNode = createNode();
+
+    if(start == NULL){
+    	start = newNode;
+    	end = newNode;
+    	return;
+    }
+    if(pos ==1){
+    	newNode-&gt;next = start;
+    	start = newNode;
+        return;
+    }
+    Node *itr = start;
+    for(int i =1 ; i&lt; pos-1 ;i++){
+    	itr = itr-&gt;next;
+    }
+    newNode-&gt;next = itr-&gt;next;
+    itr-&gt;next = newNode;
+
+}
+</code></pre>
+    <p>
+      There are few edge cases in this functions,like firstly if the list is
+      empty , it wont matter what position the user wants the add the newnode in
+      , so we simply make the newnode the start and return.
+    </p>
+    <p>
+      Secondly , if the user wants to add at first position , we need to update
+      our start , so we implement the logic of insertFirst.
+    </p>
+    <p>
+      apart from that , we traverse to one node behind the position and insert
+      the node in between. If 'itr' is confusing you can just use temp.
+    </p>
+    <h2>void createListFromStart()</h2>
+    <div class="code">
+    <pre><code>void createListFormStart(){
+    int choice =1;
+    while(choice ==1){
+        insertFirst(); //just changing here
+        printf(&quot;Do you want to add more node? 1/0 : &quot;);
+        scanf(&quot;%d&quot; ,&amp;choice);
+    }
+}
+</code></pre>
+    <p>
+      This is similar to crateList() the only difference being it implements
+      insertFirst() instead of insertLast(). Again , we ca clearly see the
+      advantage of using functional approach , the createList() can just become
+      a generic fucntion and we just need the cnage the insert() function , for
+      example if we are working on the double linked list all we need to change
+      is the createNode() and insertLast()
+    </p>
+    <pre><code>Node* createNode(){
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    printf(&quot;Enter the data for the node: &quot;);
+    scanf(&quot;%d&quot; ,&amp;newNode-&gt;data);
+    newNode-&gt;next = NULL;
+    newNode-&gt;prev = NULL; 
+    //just adding a prev here
+    
+    return newNode;
+
+}
+</code></pre>
+    <pre><code>void insertLast(){
+    Node* newNode = createNode();
+    if(start == NULL){
+        start = newNode;
+        end= newNode;
+    }
+    else{
+        end-&gt;next = newNode;
+        newMNode-&gt;prev = end; 
+        //attaching the previous node back
+
+        end = newNode;
+    }
+}
+</code></pre>
+    <p>
+      And now we can simply pass this insertLast() int the createList() and our
+      doublyLinked list is ready to go. No chnages in the printList() or the
+      createList().
+    </p>
+    <h2>void length()</h2>
+    <pre><code>int lengtht(){
+    Node *itr = start;
+    int count =0;
+    while(itr != NULL){
+        itr = itr-&gt;next;
+        count++;
+    }
+    return count;
+}
+</code></pre>
+    <h2>void contains()</h2>
+    <pre><code>
+//function to check if the list contains a value
+bool contains(int val){
+    Node *itr = start;
+    while(itr != NULL){
+        if(itr-&gt;data == val) return true;
+        itr = itr-&gt;next;
+    }
+    return false;
+}
+</code></pre>
+    <h2>void sort</h2>
+    <pre><code>
+//function to sort the list using bubble sort.
+void sort(){
+    Node* prev = start;
+    Node* cur;
+    while(prev-&gt;next !=NULL){
+        cur = prev-&gt;next;
+        while(cur != NULL){
+        if(prev-&gt;next &gt; cur-&gt;next){
+            int temp = prev-&gt;data;
+            prev-&gt;data = cur-&gt;data;
+            cur-&gt;data = temp;
+            }
+        cur = cur-&gt;next;
+        }
+        prev = prev-&gt;next;
+    }
+}
+</code></pre>
+    <h2>void deleteFirst()</h2>
+    <pre><code>
+//function to delete First element
+void deleteFirst(){
+    if(start == NULL) return;
+    Node\* temp = start;
+    start= start-&gt;next;
+    free(temp);
+}
+</code></pre>
+    <h2>void deleteLast()</h2>
+    <pre><code>
+//function to delete last node
+void deletelast(){
+
+    if(start==NULL) return;
+
+    //only one element
+    if(start-&gt;next == NULL){
+        Node* temp = start;
+        start = NULL;
+        free(temp);
+        end = start;
+        return;
+    }
+
+    Node* itr = start;
+    while(itr-&gt;next-&gt;next !=NULL){
+        itr = itr-&gt;next;
+    }
+
+    Node* temp = itr-&gt;next;
+    end = itr;
+    free(temp);
+    end-&gt;next = NULL;
+}
+</code></pre>
+    <p>
+      To Delete the last element , we have to traverse to the second last
+      element so that we can delete the last ,and then make the second last the
+      new last. For this we get two edge cases , first is the common one i.e
+      this list being empty and the second being when the list has one node. In
+      this case we cannot access the next-&gt;next as its next is already Null.
+    </p>
+    <p>
+      It will be treated as Null-&gt;next which will give and error , thus when
+      the list has one node, we simple delete that and make the start as NUll.
+    </p>
+    <h2>void deletePos()</h2>
+    <pre><code>void deletePos(){
+    int pos;
+    printf(&quot;\nEnter pos from where you want to delete:&quot;);
+    scanf(&quot;%d&quot;,&amp;pos);
+
+    if(pos == 1){
+    Node* temp = start;
+    start = NULL;
+    free(temp);
+    end = start;
+    return;
+    }
+
+    Node* itr = start;
+    for(int i=1; i&lt; pos-1 ;i++){
+    itr = itr-&gt;next;
+    }
+
+    Node* temp = itr-&gt;next;
+    itr-&gt;next = itr-&gt;next-&gt;next;
+
+    if(temp == end){
+    end= itr;
+    }
+    free(temp);
+}
+</code></pre>
+    <p>For this function there will be 2 edge cases</p>
+    <ol>
+      <li>
+        when the user wants to delete the start (i.e pos = 1) For this we
+        implement deleteFirst .
+      </li>
+      <li>
+        After traversal , if we find out that the node which we want to delete
+        is the last node (end) , We have to update the end to its prevvious
+        node.
+      </li>
+    </ol>
+  </body>
+</html>
