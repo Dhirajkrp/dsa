@@ -2,6 +2,7 @@
 package recursion;
 
 import java.util.Arrays;
+// we use the mid element as the pivot element
 public class QuickSort {
 
     static void sort(int[] arr ,int low ,int high ){
